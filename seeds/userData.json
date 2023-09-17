@@ -1,0 +1,28 @@
+[
+    {
+      "name": "Sal",
+      "email": "sal@hotmail.com",
+      "password": "password12345"
+    },
+    {
+      "name": "grumbles",
+      "email": "growly@gmail.com",
+      "password": "word12345"
+    },
+    {
+      "name": "Gideon",
+      "email": "Tophat@aol.com",
+      "password": "hats12345"
+    },
+    {
+      "name": "Blorg",
+      "email": "liverKing@msn.com",
+      "password": "Livverrrrs"
+    },
+    {
+      "name": "Josh",
+      "email": "the_josher@yahoo.com",
+      "password": "passwordsss"
+    }
+  ]
+  
