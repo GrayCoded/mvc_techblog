@@ -42,6 +42,10 @@ User.init(
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData;
             },
+            beforeUpdate: async (updatedUserData) => {
+                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+                return updatedUserData;
+            },
         },
         sequelize,
         timestamps: false,
@@ -50,8 +54,5 @@ User.init(
         modelName: 'user',
     }
 );
-
-User.hasMany(UserCreations, { foreignKey: 'user_id' });
-UserCreations.belongsTo(User, { foreignKey: 'user_id' });
 
 module.exports = User;

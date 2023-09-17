@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Blog } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+
 router.post('/', withAuth, async (req, res) => {
     try {
         const newBlog = await Blog.create({
@@ -9,15 +10,16 @@ router.post('/', withAuth, async (req, res) => {
             user_id: req.session.user_id,
         });
 
-        res.status(200).json(newBlog);
+        res.status(201).json(newBlog);
     } catch (err) {
-        res.status(400).json(err);
+        console.error(err);
+        res.status(400).json({ message: 'Invalid input or server error.' });
     }
 });
 
 router.delete('/:id', withAuth, async (req, res) => {
     try {
-        const blogData = await Blog.destroy({
+        const blogData = await Blog.findOne({
             where: {
                 id: req.params.id,
                 user_id: req.session.user_id,
@@ -29,9 +31,11 @@ router.delete('/:id', withAuth, async (req, res) => {
             return;
         }
 
-        res.status(200).json(blogData);
+        await blogData.destroy();
+        res.status(200).json({ message: 'Blog post deleted successfully.' });
     } catch (err) {
-        res.status(500).json(err);
+        console.error(err);
+        res.status(500).json({ message: 'Server error.' });
     }
 });
 
