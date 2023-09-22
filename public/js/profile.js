@@ -14,7 +14,7 @@ const newFormHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/home');
+            document.location.replace('/profile');
         } else {
             alert('Failed to create post');
         }
@@ -32,15 +32,15 @@ const delButtonHandler = async (event) => {
         if (response.ok) {
             document.location.replace('/profile');
         } else {
-            alert('Failed to delete post');
+            alert('Failed to delete blog');
         }
     }
 };
 
 document
-    .querySelector('.new-post-form')
+    .querySelector('.new-blog-form')
     .addEventListener('submit', newFormHandler);
 
 document
-    .querySelector('.post-list')
+    .querySelector('.blog-list')
     .addEventListener('click', delButtonHandler);
