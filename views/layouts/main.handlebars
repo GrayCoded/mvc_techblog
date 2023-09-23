@@ -10,25 +10,33 @@
 </head>
 
 <body>
-  <header class="display-flex justify-space-between align-center p-2">
-    <h1>
-      The Tech Blog 
-    </h1>
-    <nav>
-      {{#if logged_in}}
-     
-      <button class="btn" id="home">Home</button>
-      <button class="btn" id="dashboard">Dashboard</button>
-      <button class="btn" id="logout">Logout</button>
-    </nav>
-    {{/if}}
-  </header>
-  <main class="container container-fluid mt-5">
-    {{{ body }}}
-  </main>
-  <footer>
-      
-  </footer>
+
+  <div class="flex-column justify-space-around">
+    
+      <h1 class="title">
+        <p >The Tech Blog</p>
+      </h1>
+      <nav class="button">
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+
+        <a href="/dashboard">Dashboard</a> |
+        <a  class="button" id="logout">Logout</a> |
+        {{else}}
+        <a href="/login" class="button">Login</a>
+        <a href="/login" class="button">Dashboard</a>
+        {{/if}}
+        <a href="/" class="button">Home</a>
+      </nav>
+    </header>
+    <main class="container container-fluid mt-5">
+      <!-- Render the sub layout -->
+      {{{ body }}}
+    </main>
+    <footer>
+      Thanks for coming!
+    </footer>
+  </div>
 
   {{#if logged_in}}
   <script src="/js/logout.js"></script>

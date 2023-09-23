@@ -10,7 +10,7 @@ router.post('/', withAuth, async (req, res) => {
             user_id: req.session.user_id,
         });
 
-        res.status(201).json(newBlog);
+        res.status(200).json(newBlog);
     } catch (err) {
         console.error(err);
         res.status(400).json({ message: 'Invalid input or server error.' });
